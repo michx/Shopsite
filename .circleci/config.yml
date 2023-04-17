@@ -93,6 +93,7 @@ jobs:
 workflows:
   build_and_push_image:
     jobs:
+      - create_helm_chart
       - aws-ecr/build-and-push-image:
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
