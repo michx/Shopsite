@@ -17,6 +17,9 @@ jobs:
       - checkout 
       - helm/install-helm-client
       - run:
+          name: move to project directory
+          command: cd ~/project
+      - run:
           name: create chart
           command: helm create charts
       - run:
