@@ -42,6 +42,11 @@ jobs:
           command: |
             eksctl utils write-kubeconfig --cluster=$AWS_EKS_CLUSTER_NAME --region=$AWS_CLUSTER_REGION
       - run:
+          name: "cluster adding IAM"
+          command: |
+            eksctl create iamidentitymapping --cluster $AWS_EKS_CLUSTER_NAME --region $AWS_CLUSTER_REGION --arn $EKS_ARN --group system:masters --no-duplicate-arns --username $EKS_USER
+
+      - run:
           name: "helm install"
           command: bash ./scripts/deploy.sh 1.0.0 $AWS_ECR_ACCOUNT_URL $AWS_ECR_HELM_REPO_NAME
   test-python:
