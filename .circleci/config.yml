@@ -9,26 +9,6 @@ orbs:
   helm: circleci/helm@2.0.1
 
 jobs:
-  create_helm_chart:
-    docker:
-      # replace with your preferred image
-      - image: cimg/base:stable
-    steps:
-      - checkout 
-      - helm/install-helm-client
-      - run:
-          name: move to project directory
-          command: cd ~/project
-      - run:
-          name: create chart
-          command: helm create charts
-      - run:
-          name: copy relevant files
-          command: cp ~/project/iac/charts/values.yaml charts/values.yaml && cp ~/project/iac/charts/templates/deployment.yaml charts/templates/deployment.yaml     
-      - run:
-          name: package chart
-          command: helm package charts
-
   install_helm_chart:
     docker:
       - image: cimg/python:3.10.7
@@ -96,7 +76,6 @@ jobs:
 workflows:
   build_and_push_image:
     jobs:
-      - create_helm_chart
       - aws-ecr/build-and-push-image:
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
