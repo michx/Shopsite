@@ -21,7 +21,7 @@ jobs:
           command: helm create charts
       - run:
           name: copy relevant files
-          command: cp ~/project/iac/charts/values.yaml charts/values.yaml && cp ~/project/iac/charts/template/deployment.yaml charts/template/deployment.yaml     
+          command: cp ~/project/iac/charts/values.yaml charts/values.yaml && cp ~/project/iac/charts/templates/deployment.yaml charts/templates/deployment.yaml     
       - run:
           name: package chart
           command: helm package charts
