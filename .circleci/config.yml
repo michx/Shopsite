@@ -14,8 +14,8 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
+      - checkout 
       - helm/install-helm-client
-      - checkout
       - run:
           name: create chart
           command: helm create charts
