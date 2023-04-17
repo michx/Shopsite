@@ -9,8 +9,8 @@ labels:
   env: "staging"
 
 service:
-  port: 5000
-  targetPort: 5000
+  port: 80
+  targetPort: 80
   type: LoadBalancer
 
 replicaCount: 1

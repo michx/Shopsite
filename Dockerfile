@@ -11,6 +11,6 @@ RUN chown -R www-data:www-data /opt/app
 
 
 # start server
-EXPOSE 8020
+EXPOSE 80
 STOPSIGNAL SIGTERM
-CMD ["python manage.py runserver"]
+CMD ["python manage.py runserver 0.0.0.0:80"]
