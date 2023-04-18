@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: 046573050373.dkr.ecr.eu-central-1.amazonaws.com/myhomegrownweb
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: "latest"
 
 labels:
