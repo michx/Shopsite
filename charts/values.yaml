@@ -13,7 +13,6 @@ service:
   targetPort: 80
   type: LoadBalancer
 
-replicaCount: 1
 
 autoscaling:
   enabled: false
@@ -25,4 +24,4 @@ imagePullSecrets:
   - name: regcred
 
 podAnnotations:
-  rollme: {{ randAlphaNum 5 | quote }}
+  - rollme: {{ randAlphaNum 5 | quote }}
