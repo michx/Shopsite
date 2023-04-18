@@ -6,7 +6,7 @@ echo "oci://$AWS_ECR_ACCOUNT_URL/$AWS_ECR_HELM_REPO_NAME"
 export KUBECONFIG=/home/circleci/.kube/config
 result=$(eval helm ls | grep flask-helm)
 if [ $? -ne "0" ]; then
-   helm install ShoppingSite "oci://$AWS_ECR_ACCOUNT_URL/$AWS_ECR_HELM_REPO_NAME" --version $TAG
+   helm install shopping-site "oci://$AWS_ECR_ACCOUNT_URL/$AWS_ECR_HELM_REPO_NAME" --version $TAG
 else
-   helm upgrade ShoppingSite "oci://$AWS_ECR_ACCOUNT_URL/$AWS_ECR_HELM_REPO_NAME" --version $TAG
+   helm upgrade shopping-site "oci://$AWS_ECR_ACCOUNT_URL/$AWS_ECR_HELM_REPO_NAME" --version $TAG
 fi
