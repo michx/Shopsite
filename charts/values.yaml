@@ -22,6 +22,3 @@ ingress:
 
 imagePullSecrets:
   - name: regcred
-
-podAnnotations:
-  - rollme: {{ randAlphaNum 5 | quote }}
