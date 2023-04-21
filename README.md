@@ -1,6 +1,6 @@
 <h1>E-Commerce Website with Django + React & Redux</h1>
 
-## ✨ [Live Link - Otaku House](https://otakuhouse.herokuapp.com/)
+
 
 ### How to Run
 
