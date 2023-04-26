@@ -48,7 +48,7 @@ jobs:
 
       - run:
           name: "helm install"
-          command: bash ./scripts/deploy.sh 1.0.0 $AWS_ECR_ACCOUNT_URL $AWS_ECR_HELM_REPO_NAME
+          command: bash ./scripts/deploy.sh 0.1.0 $AWS_ECR_ACCOUNT_URL $AWS_ECR_HELM_REPO_NAME
   test-python:
     docker:
       - image: cimg/python:3.10.2
