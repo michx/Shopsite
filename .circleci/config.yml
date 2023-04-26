@@ -77,12 +77,13 @@ jobs:
           command: docker login --username AWS --password $ECRTOKEN 046573050373.dkr.ecr.eu-central-1.amazonaws.com && docker push 046573050373.dkr.ecr.eu-central-1.amazonaws.com/myhomegrownweb:latest
 
   push-helm:
+    docker:
+       - image: ubuntu-2004:202010-01
     steps:
       - helm/install-helm-client
       - run:
-          command: >
+          command: |
             export HELM_EXPERIMENTAL_OCI=1
-
             helm chart save ./charts
             $AWS_ECR_ACCOUNT_URL/$AWS_ECR_REPO_NAME:1.0.0
 
