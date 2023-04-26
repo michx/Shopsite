@@ -78,7 +78,7 @@ jobs:
 
   push-helm:
     docker:
-       - image: ubuntu-2004:2023.04.2
+       - image: cimg/base:2021.04
     steps:
       - helm/install-helm-client
       - run:
