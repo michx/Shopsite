@@ -78,7 +78,7 @@ jobs:
 
   push-helm:
     steps:
-      - helm/install-helm-client:
+      - helm/install-helm-client
       - run:
           command: >
             export HELM_EXPERIMENTAL_OCI=1
