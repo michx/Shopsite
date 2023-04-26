@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: 046573050373.dkr.ecr.eu-central-1.amazonaws.com/okuto-production
+  repository: $AWS_ECR_ACCOUNT_URL/$AWS_ECR_REPO_NAME
   pullPolicy: Always
   tag: "latest"
 
