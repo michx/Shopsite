@@ -76,7 +76,19 @@ jobs:
           name: Login to AWS
           command: docker login --username AWS --password $ECRTOKEN 046573050373.dkr.ecr.eu-central-1.amazonaws.com && docker push 046573050373.dkr.ecr.eu-central-1.amazonaws.com/myhomegrownweb:latest
 
+  push-helm:
+    steps:
+      - helm/install-helm-client:
+      - run:
+          command: >
+            export HELM_EXPERIMENTAL_OCI=1
 
+            helm chart save ./charts
+            $AWS_ECR_ACCOUNT_URL/$AWS_ECR_REPO_NAME:1.0.0
+
+            helm chart push
+            $AWS_ECR_ACCOUNT_URL/$AWS_ECR_REPO_NAME:1.0.0
+          name: Push chart to Amazon ECR
 
 workflows:
   build_and_push_image:
@@ -89,15 +101,7 @@ workflows:
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_DEFAULT_REGION
           tag: "latest"
-      - aws-ecr/push-helm-chart:
-          account-url: AWS_ECR_ACCOUNT_URL
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          create-repo: false
-          path: ./charts
-          region: AWS_DEFAULT_REGION
-          repo: "${AWS_ECR_HELM_REPO_NAME}"
-          tag: 1.0.0
+      - push-helm:
           requires:
             - aws-ecr/build-and-push-image
       - install_helm_chart:
