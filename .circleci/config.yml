@@ -85,7 +85,7 @@ jobs:
       - run:
           command: |
             export HELM_EXPERIMENTAL_OCI=1
-            helm  package ./charts $AWS_ECR_ACCOUNT_URL/$AWS_ECR_REPO_NAME:1.0.0
+            helm  package ./charts 
             helm  push ssite-0.1.0.tgz "oci://$AWS_ECR_ACCOUNT_URL/$AWS_ECR_HELM_REPO_NAME"
           name: Push chart to Amazon ECR
 
