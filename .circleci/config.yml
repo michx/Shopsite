@@ -7,6 +7,8 @@ orbs:
   python: circleci/python@1.5.0
   aws-ecr: orbies/aws-ecr@1.2.1
   helm: circleci/helm@2.0.1
+  envsubst: sawadashota/envsubst@1.1.0
+
 
 jobs:
   install_helm_chart:
@@ -81,6 +83,7 @@ jobs:
        - image: cimg/base:2021.04
     steps:
       - checkout
+      - envsubst/install
       - run:
           name: Install and configure helm
           command: sudo curl -L https://get.helm.sh/helm-v3.10.1-linux-amd64.tar.gz | tar xz && sudo mv linux-amd64/helm /bin/helm && sudo rm -rf linux-amd64
