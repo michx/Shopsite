@@ -107,4 +107,4 @@ workflows:
             - aws-ecr/build-and-push-image
       - install_helm_chart:
           requires:
-            - aws-ecr/push-helm-chart
+            - aws-ecr/push-helm
