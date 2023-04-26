@@ -80,7 +80,7 @@ jobs:
     docker:
        - image: cimg/base:2021.04
     steps:
-      -checkout
+      - checkout
       - helm/install-helm-client
       - run:
           command: |
