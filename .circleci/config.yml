@@ -92,7 +92,7 @@ jobs:
             export HELM_EXPERIMENTAL_OCI=1
             helm  package ./charts
             aws ecr get-login-password --region $AWS_DEFAULT_REGION | helm registry login --username AWS --password-stdin $AWS_ECR_ACCOUNT_URL
-            helm  push helmrepo-0.1.0.tgz oci://$AWS_ECR_ACCOUNT_URL/$AWS_ECR_HELM_REPO_NAME
+            helm  push helmrepo-0.1.0.tgz oci://$AWS_ECR_ACCOUNT_URL/
           name: Push chart to Amazon ECR
 
 workflows:
